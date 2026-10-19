@@ -515,23 +515,24 @@
                     shsStudents.push({ lrn, fullname, contact, yearLevel, strand });
                     localStorage.setItem("shsDeptData", JSON.stringify(shsStudents));
                 }
+                cancelEdit();
+                displayStudents();
             } else {
                 if (confirm("Are you sure you want to update this student record?")) {
                     if (dept === "highschool") {
                         hsStudents[editIndex] = { lrn, fullname, contact, yearLevel };
                         localStorage.setItem("hsDeptData", JSON.stringify(hsStudents));
-                        alert("Student record updated successfully.");
                     } else {
                         shsStudents[editIndex] = { lrn, fullname, contact, yearLevel, strand };
                         localStorage.setItem("shsDeptData", JSON.stringify(shsStudents));
-                        alert("Student record updated successfully.");
                     }
+                    alert("Student record updated successfully.");
+                    cancelEdit();
+                    displayStudents();
                 } else {
                     alert("Student record update Cancelled")
                 }
             }
-            cancelEdit();
-            displayStudents();
         }
 
         function clearForm() {
